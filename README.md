@@ -8,7 +8,7 @@ You can quickly give a go to our optimized kEffNet via [Google Colab](https://co
 * [kEffNet v2.](https://colab.research.google.com/github/joaopauloschuler/k-neural-api/blob/master/examples/jupyter/kEffNet_v2.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/joaopauloschuler/k-neural-api/blob/master/examples/jupyter/kEffNet_v2.ipynb)
 
 ## The Raw Results Folder
-If you just need an easy to use example, you can try the Colab example above. Otherwise, you can look at all raw experiment files used for the paper on the TBC folder.
+If you just need an easy to use example, you can try the Colab example above. Otherwise, you can look at all raw experiment files used for the paper on the [raw](https://github.com/joaopauloschuler/kEffNetV2/tree/main/raw) folder.
 
 ## Creating Optimized Models
 You can create kEffNet V2 following the example below. The parameter `kType` defines the minimum number of channels per group. For example, for 16 channels per group, you should use `cai.layers.D6v3_16ch()`. For 32 channels, you should use `cai.layers.D6v3_32ch()`.
