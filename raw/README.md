@@ -1,6 +1,6 @@
  
 # The Raw Results Folder
-This folder is organized as follows: `<dataset name-epochs/label>`.
+This folder is organized as follows: `<dataset-epochs/label>`.
 
 ## Experiment Labels
 Each raw file has a label in its name. The following tables translate these labels.
