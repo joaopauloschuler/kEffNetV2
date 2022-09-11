@@ -39,4 +39,17 @@ Other [kEffNet variants](https://github.com/joaopauloschuler/k-neural-api/blob/m
 This project is an open source project. If you like what you see, please give it a star on github.
 
 ## Citing this Paper
-TBC
+```
+@Article{e24091264,
+AUTHOR = {Schwarz Schuler, Joao Paulo and Also, Santiago Romani and Puig, Domenec and Rashwan, Hatem and Abdel-Nasser, Mohamed},
+TITLE = {An Enhanced Scheme for Reducing the Complexity of Pointwise Convolutions in CNNs for Image Classification Based on Interleaved Grouped Filters without Divisibility Constraints},
+JOURNAL = {Entropy},
+VOLUME = {24},
+YEAR = {2022},
+NUMBER = {9},
+ARTICLE-NUMBER = {1264},
+URL = {https://www.mdpi.com/1099-4300/24/9/1264},
+ISSN = {1099-4300},
+DOI = {10.3390/e24091264}
+}
+```
