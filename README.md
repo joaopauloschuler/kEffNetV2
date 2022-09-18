@@ -43,6 +43,70 @@ The following papers also deal about parameters and floating-point computation s
 - [Reliable Deep Learning Plant Leaf Disease Classification Based on Light-Chroma Separated Branches.](https://www.researchgate.net/publication/355215213_Reliable_Deep_Learning_Plant_Leaf_Disease_Classification_Based_on_Light-Chroma_Separated_Branches)
 - [Color-aware two-branch DCNN for efficient plant disease classification.](https://www.researchgate.net/publication/361511874_Color-Aware_Two-Branch_DCNN_for_Efficient_Plant_Disease_Classification)
 
+## Creating Optimized Models - Beyond the Paper
+Beyond what is shown on the paper, you can create kDenseNet, kInception V3 and kMobileNet optimized models as follows.
+
+### kDenseNet-BC L100 12ch
+In DenseNets, you can define the minimum number of channels per group for transitions (`kTypeTransition`) and for blocks (`kTypeBlock`):
+```
+model = cai.densenet.ksimple_densenet([32, 32, 3], 
+  blocks=16, 
+  growth_rate=12, bottleneck=48, compression=0.5,
+  l2_decay=0,
+  kTypeTransition=cai.layers.D6v3_12ch(),
+  kTypeBlock=cai.layers.D6v3_12ch(), 
+  num_classes=10,
+  dropout_rate=0.0,
+  activation=keras.activations.swish,
+  has_interleave_at_transition=True)
+```
+
+### kInception V3 32ch
+The example below should work for most use cases:
+```
+model = cai.inception_v3.two_path_inception_v3(
+  include_top=True,
+  weights=None,
+  input_shape=(224, 224, 3),
+  pooling=None,
+  classes=num_classes,
+  two_paths_partial_first_block=0,
+  two_paths_first_block=False,
+  two_paths_second_block=False,
+  deep_two_paths=False,
+  kType=cai.layers.D6v3_32ch())
+```
+Some of the parameters such as `two_paths_partial_first_block`, `two_paths_first_block` and `two_paths_second_block` are related to the papaer [Reliable Deep Learning Plant Leaf Disease Classification Based on Light-Chroma Separated Branches](https://github.com/joaopauloschuler/two-path-noise-lab-plant-disease).
+
+### kMobileNet 32ch
+
+The example below creates a basic with optimized pointwise convolutions:
+
+```
+model = cai.mobilenet.kMobileNet(
+  include_top=True,
+  weights=None,
+  input_shape=(224, 224, 3),
+  pooling=None,
+  classes=10,
+  kType=cai.layers.D6v3_32ch())
+```
+
+### kMobileNet V3 32ch
+The example below creates a MobileNet V3 with optimized pointwise convolutions:
+```
+model = cai.mobilenet_v3.kMobileNetV3Large(
+  input_shape=(224, 224, 3),
+  alpha=1.0,
+  minimalistic=False,
+  include_top=True,
+  input_tensor=None,
+  classes=10,
+  pooling=None,
+  dropout_rate=0.2,
+  kType=cai.layers.D6v3_32ch())
+```
+
 ## Give this Project a Star
 This project is an open source project. If you like what you see, please give it a star on github.
 
